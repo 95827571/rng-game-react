@@ -8,6 +8,7 @@ export default function RngMain() {
     const numbersInGame = [];
     const buttonsToDisplay = [];
     let lastNumber = 0;
+    const score = useRef(0);
 
     const [gameState, setGameState] = useState(0);
 
@@ -31,7 +32,7 @@ export default function RngMain() {
 
     const amountOfButtons = Clamp(Math.floor(Math.random()*10) + 1, 3, 10);
     genNumbers(amountOfButtons);
-    console.log(numbersInGame);
+    console.log(score);
     
     
     for (let i = 0; i < numbersInGame.length; i++) {
@@ -47,12 +48,12 @@ export default function RngMain() {
             )}
             {gameState == 1 && (
                 <div id="lose-screen">
-                    <div id="restart-btn">RESTART</div>
+                    <div onClick={() => {setGameState(0); score.current -= 2}} id="restart-btn">RESTART</div>
                 </div>
             )}
             {gameState == 2 && (
             <div id="win-screen">
-                <div id="win-btn">YOU WIN!</div>
+                <div onClick={() => {setGameState(0); score.current++}}id="win-btn">YOU WIN!</div>
             </div>
             )}
         </div>
