@@ -1,0 +1,28 @@
+#button-holder {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: center;
+    margin-top: 6vh;
+    gap: 20px;
+}
+
+.num-btn {
+    width: 100px;
+    height: 100px;
+    background-color: #c4c4c4;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.num-btn > p {
+    font-weight: 600;
+    font-size: 18pt;
+}
+
+.num-btn:hover {
+    background-color: #969696;
+}
