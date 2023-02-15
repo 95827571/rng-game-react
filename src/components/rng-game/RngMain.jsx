@@ -21,11 +21,13 @@ export default function RngMain() {
     const clickHandle = (num) => {
         const difference = num - lastNumber
         if (difference !== 1) {
+            score.current -= 2;
             setGameState(1);
             return;
         }
         lastNumber = num
         if(lastNumber == numbersInGame.length) {
+            score.current++;
             setGameState(2);
         }
     }
@@ -47,13 +49,15 @@ export default function RngMain() {
             </div>
             )}
             {gameState == 1 && (
-                <div id="lose-screen">
-                    <div onClick={() => {setGameState(0); score.current -= 2}} id="restart-btn">RESTART</div>
+                <div className="end-screen">
+                    <div onClick={() => {setGameState(0)}} className="end-btn" id="lose-btn"><p>YOU LOST, TRY AGAIN!</p></div>
+                    <p>Current Score: {score.current}</p>
                 </div>
             )}
             {gameState == 2 && (
-            <div id="win-screen">
-                <div onClick={() => {setGameState(0); score.current++}}id="win-btn">YOU WIN!</div>
+            <div className="end-screen">
+                <div onClick={() => {setGameState(0)}}  className="end-btn" id="win-btn"><p>YOU WIN! PLAY AGAIN</p></div>
+                <p>Current Score: {score.current}</p>
             </div>
             )}
         </div>

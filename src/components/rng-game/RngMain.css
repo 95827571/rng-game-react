@@ -25,4 +25,34 @@
 
 .num-btn:hover {
     background-color: #969696;
+    cursor: pointer;
+}
+
+.end-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 100vw;
+}
+
+.end-btn {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.end-btn:hover {
+    cursor: pointer;
+}
+
+#win-btn {
+    background-color: green;
+}
+
+#lose-btn {
+    background-color: red;
 }
