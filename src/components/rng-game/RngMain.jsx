@@ -9,8 +9,7 @@ export default function RngMain() {
     const buttonsToDisplay = [];
     let lastNumber = 0;
 
-    const [hasLost, setHasLost] = useState(false);
-    const [hasWon, setHasWon] = useState(false);
+    const [gameState, setGameState] = useState(0);
 
     const genNumbers = (max) => {
         for (let i = 1; i <= max; i++) {
@@ -21,12 +20,12 @@ export default function RngMain() {
     const clickHandle = (num) => {
         const difference = num - lastNumber
         if (difference !== 1) {
-            setHasLost(true);
+            setGameState(1);
             return;
         }
         lastNumber = num
         if(lastNumber == numbersInGame.length) {
-            setHasWon(true);
+            setGameState(2);
         }
     }
 
@@ -41,19 +40,19 @@ export default function RngMain() {
     
     return (
         <div>
-            {(!hasLost && !hasWon) && (
+            {gameState == 0 && (
             <div id="button-holder">
                 {buttonsToDisplay}
             </div>
             )}
-            {hasLost && (
+            {gameState == 1 && (
                 <div id="lose-screen">
                     <div id="restart-btn">RESTART</div>
                 </div>
             )}
-            {hasWon && (
+            {gameState == 2 && (
             <div id="win-screen">
-                <div id="restart-btn">YOU WIN!</div>
+                <div id="win-btn">YOU WIN!</div>
             </div>
             )}
         </div>
